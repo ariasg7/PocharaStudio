@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 export function PersonalNarrative() {
   return (
     <section 
-      id="approach" 
+      id="about me" 
       className="relative min-h-screen bg-[#9ba88a] px-6 md:px-12 py-24 md:py-40 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
@@ -21,7 +21,7 @@ export function PersonalNarrative() {
             className="text-4xl md:text-7xl text-white md:ml-12 tracking-tight"
             style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 400 }}
           >
-            THE APPROACH
+            About Me
           </h2>
         </motion.div>
 

@@ -6,7 +6,7 @@ import { Menu, X } from 'lucide-react';
 
 const NAV_LINKS = [
   { name: 'STORIES', href: '#stories' },
-  { name: 'APPROACH', href: '#approach' },
+  { name: 'ABOUT ME', href: '#about me' },
   { name: 'INQUIRE', href: '#inquire' },
 ];
 
@@ -40,7 +40,7 @@ export function Header() {
           
           {/* LOGO */}
           <div className="flex items-center gap-3 cursor-pointer" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-            <div className="text-2xl md:text-3xl tracking-tight">PS -</div>
+            <div className="text-2xl md:text-3xl tracking-tight">PS</div>
             <div className="hidden md:block text-xs tracking-[0.3em] font-light uppercase">
               Pochara STUDIO
             </div>

@@ -103,7 +103,7 @@ export function Footer() {
         {/* COPYRIGHT */}
         <div className="mt-32 pt-8 border-t border-[#2d3436]/10 text-center">
           <p className="text-[10px] md:text-xs text-[#2d3436]/50 tracking-[0.2em] uppercase">
-            © {currentYear} ALINA DELFINO PHOTOGRAPHY — ALL RIGHTS RESERVED
+            © {currentYear} POCHARA PHOTOGRAPHY — ALL RIGHTS RESERVED
           </p>
         </div>
       </div>
