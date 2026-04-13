@@ -50,7 +50,7 @@ export function Hero() {
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
           className="text-xs md:text-sm tracking-[0.3em] mb-12 font-light max-w-2xl uppercase"
         >
-          Stories in Motion — Wedding | Engagement | City Hall
+          Stories in Motion — Wedding | Engagement | Parties
         </motion.p>
 
         <motion.div
