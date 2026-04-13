@@ -70,11 +70,14 @@ export function PersonalNarrative() {
             className="text-white space-y-10 lg:pl-12"
           >
             <p
-              className="text-2xl md:text-3xl lg:text-5xl leading-[1.3] font-light"
-              style={{ fontFamily: 'Cormorant Garamond, serif' }}
-            >
-              Photography isn&apos;t just a record; it&apos;s the <span className="italic">preservation of a feeling</span>. We prioritize the candid, the raw, and the quiet moments over posed perfection.
-            </p>
+  className="text-2xl md:text-3xl lg:text-4xl leading-[1.4] font-light max-w-4xl"
+  style={{ fontFamily: 'Cormorant Garamond, serif' }}
+>
+  Based in <span className="italic">New York and New Jersey</span>, I capture 
+  <span className="italic"> elegant, authentic</span> moments with intention. 
+  I believe your story deserves to be documented with excellence, 
+  creating imagery that feels both <span className="italic">timeless</span> and deeply personal.
+</p>
 
             <div className="flex flex-wrap gap-3 pt-6">
               <span className="px-5 py-2 border border-white/30 text-[10px] md:text-xs tracking-[0.3em] font-light uppercase backdrop-blur-sm">

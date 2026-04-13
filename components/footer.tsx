@@ -1,15 +1,15 @@
 "use client";
 
 import { motion } from 'framer-motion';
-//import { ImageWithFallback } from './figma/ImageWithFallback';
 
 const INSTAGRAM_POSTS = [
-  { id: 1, url: 'https://images.unsplash.com/photo-1763140615918-a4af28eb6a71?auto=format&fit=crop&q=80&w=600', likes: 234, comments: 12 },
-  { id: 2, url: 'https://images.unsplash.com/photo-1772634734681-d56e32b9e074?auto=format&fit=crop&q=80&w=600', likes: 189, comments: 8 },
-  { id: 3, url: 'https://images.unsplash.com/photo-1770199780470-1e6e3d30f8f8?auto=format&fit=crop&q=80&w=600', likes: 412, comments: 24 },
-  { id: 4, url: 'https://images.unsplash.com/photo-1646679080828-a04816f77c98?auto=format&fit=crop&q=80&w=600', likes: 156, comments: 5 },
-  { id: 5, url: 'https://images.unsplash.com/photo-1652107258371-da96c470b245?auto=format&fit=crop&q=80&w=600', likes: 302, comments: 19 },
-  { id: 6, url: 'https://images.unsplash.com/photo-1730175602795-138827f9623f?auto=format&fit=crop&q=80&w=600', likes: 277, comments: 14 },
+  // Add the specific Instagram post URLs here
+  { id: 1, url: '/img/insta/insta1.webp', link: 'https://www.instagram.com/p/DRrvc1Nkf-R/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', likes: 24, comments: 8 },
+  { id: 2, url: '/img/insta/insta2.webp', link: 'https://www.instagram.com/p/DSL4JOrkSUF/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', likes: 10, comments: 0 },
+  { id: 3, url: '/img/insta/insta3.webp', link: 'https://www.instagram.com/p/DPztO6EkfoF/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', likes: 16, comments: 0 },
+  { id: 4, url: '/img/insta/insta4.webp', link: 'https://www.instagram.com/p/DOUFVelEdHF/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', likes: 34, comments: 0 },
+  { id: 5, url: '/img/insta/insta5.webp', link: 'https://www.instagram.com/p/DS-8joBkWne/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', likes: 37, comments: 2 },
+  { id: 6, url: '/img/insta/insta6.webp', link: 'https://www.instagram.com/p/DOUF1BkEXMW/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==', likes: 33, comments: 4 },
 ];
 
 const containerVariants = {
@@ -57,17 +57,21 @@ export function Footer() {
           className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-24"
         >
           {INSTAGRAM_POSTS.map((post) => (
-            <motion.div
+            <motion.a
               key={post.id}
+              href={post.link}
+              target="_blank"
+              rel="noopener noreferrer"
               variants={itemVariants}
               whileHover={{ scale: 1.02 }}
-              className="relative group cursor-pointer overflow-hidden aspect-square bg-gray-200"
+              className="relative group cursor-pointer overflow-hidden aspect-square bg-gray-200 block"
             >
-              {/*<ImageWithFallback
+              <img
                 src={post.url}
                 alt={`Portfolio selection ${post.id}`}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              /> */}
+                loading="lazy"
+              />
               {/* OVERLAY */}
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-[2px]">
                 <div className="text-white text-center font-light tracking-widest text-xs">
@@ -78,7 +82,7 @@ export function Footer() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </motion.div>
 
@@ -95,9 +99,14 @@ export function Footer() {
           >
             Ready to Tell Your Story?
           </p>
-          <button className="group relative overflow-hidden bg-[#2d3436] text-white px-12 py-5 text-sm tracking-[0.3em] transition-all hover:bg-[#1a1a1a]">
+          
+          {/* Changed to anchor tag for the external or internal link */}
+          <a 
+            href="mailto:hello@pocharastudio.com" // Or your contact page route
+            className="group relative inline-block overflow-hidden bg-[#2d3436] text-white px-12 py-5 text-sm tracking-[0.3em] transition-all hover:bg-[#1a1a1a]"
+          >
             <span className="relative z-10">INQUIRE HERE</span>
-          </button>
+          </a>
         </motion.div>
 
         {/* COPYRIGHT */}
