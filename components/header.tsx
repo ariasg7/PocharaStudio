@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const NAV_LINKS = [
-  { name: 'STORIES', href: '#stories' },
   { name: 'ABOUT ME', href: '#about me' },
-  { name: 'INQUIRE', href: '#inquire' },
+  { name: 'STORIES', href: '#stories' },
+  { name: 'CONNECT', href: '#connect' },
 ];
 
 export function Header() {

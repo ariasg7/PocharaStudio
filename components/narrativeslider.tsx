@@ -5,19 +5,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const STORIES = [
   {
-    category: 'WEDDING',
+    category: 'ANNA & MATT',
     image: 'https://images.unsplash.com/photo-1519741196428-6a2175fa2557?auto=format&fit=crop&q=80&w=1600',
     accent: '#d4a574',
     accentTransparent: 'rgba(212, 165, 116, 0)'
   },
   {
-    category: 'CITY HALL',
+    category: 'MARCELLA & ZACK',
     image: 'https://images.unsplash.com/photo-1706857753003-394d2ce33079?auto=format&fit=crop&q=80&w=1600',
     accent: '#c9a959',
     accentTransparent: 'rgba(201, 169, 89, 0)'
   },
   {
-    category: 'ENGAGEMENT',
+    category: 'ELLE & FRANK',
     image: 'https://images.unsplash.com/photo-1768632066855-4e00e16a22c7?auto=format&fit=crop&q=80&w=1600',
     accent: '#9b8579',
     accentTransparent: 'rgba(155, 133, 121, 0)'
