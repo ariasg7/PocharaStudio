@@ -29,7 +29,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer id="connect" className="relative bg-[#f5f1ec] px-6 md:px-12 py-24 md:py-32">
+    <footer id="connect" className="relative bg-[#faf9f6] px-6 md:px-12 py-24 md:py-32">
       <div className="max-w-7xl mx-auto">
         
         {/* SECTION HEADER */}

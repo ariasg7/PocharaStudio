@@ -6,88 +6,95 @@ export function PersonalNarrative() {
   return (
     <section 
       id="about me" 
-      className="relative min-h-screen bg-[#9ba88a] px-6 md:px-12 py-24 md:py-40 overflow-hidden"
+      className="relative min-h-screen bg-[#1a1a1a] px-6 md:px-12 py-24 md:py-48 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto">
-        {/* SECTION HEADER */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          viewport={{ once: true }}
-          className="mb-20 md:mb-32"
-        >
-          <h2
-            className="text-4xl md:text-7xl text-white md:ml-12 tracking-tight"
-            style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 400 }}
-          >
-            About Me
-          </h2>
-        </motion.div>
+      <div className="absolute top-10 left-10 pointer-events-none opacity-[0.03] select-none">
+        <h2 className="text-[20vw] leading-none font-serif italic text-white">Pochara</h2>
+      </div>
 
-        <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid md:grid-cols-2 gap-16 lg:gap-32 items-center">
+          
           {/* IMAGE COMPOSITION */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
             className="relative"
           >
-            {/* Main Portrait */}
-            <div className="relative z-10 md:mr-16 lg:mr-24 overflow-hidden bg-neutral-800 shadow-2xl">
+            <div className="relative z-10 md:mr-20 lg:mr-32 aspect-[3/4] overflow-hidden bg-neutral-900 shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1770199780470-1e6e3d30f8f8?auto=format&fit=crop&q=80&w=800"
-                alt="Portrait of Alina Delfino"
-                className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
+                src="/img/insta/insta1.webp"
+                alt="Artist Portrait"
+                className="w-full h-full object-cover grayscale-[0.3] hover:grayscale-0 transition-all duration-1000"
                 loading="lazy"
               />
             </div>
 
-            {/* Accent "Behind the Scenes" Image */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.2, delay: 0.6 }}
               viewport={{ once: true }}
-              className="absolute -bottom-12 -right-4 md:-right-16 w-48 h-64 md:w-72 md:h-96 hidden sm:block z-20 overflow-hidden shadow-2xl border-[12px] border-white/10 backdrop-blur-sm"
+              className="absolute -bottom-10 right-0 md:-right-8 w-1/2 aspect-square z-20 overflow-hidden border-[1px] border-white/20 shadow-2xl bg-neutral-800"
             >
               <img
-                src="https://images.unsplash.com/photo-1730175602983-d006716223cc?auto=format&fit=crop&q=80&w=600"
-                alt="Behind the scenes studio moment"
-                className="w-full h-full object-cover opacity-90"
+                src="/img/insta/insta5.webp"
+                alt="Behind the scenes"
+                className="w-full h-full object-cover opacity-80"
                 loading="lazy"
               />
             </motion.div>
           </motion.div>
 
           {/* TEXTUAL CONTENT */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="text-white space-y-10 lg:pl-12"
-          >
-            <p
-  className="text-2xl md:text-3xl lg:text-4xl leading-[1.4] font-light max-w-4xl"
-  style={{ fontFamily: 'Cormorant Garamond, serif' }}
->
-  Based in <span className="italic">New York and New Jersey</span>, I capture 
-  <span className="italic"> elegant, authentic</span> moments with intention. 
-  I believe your story deserves to be documented with excellence, 
-  creating imagery that feels both <span className="italic">timeless</span> and deeply personal.
-</p>
+          <div className="flex flex-col justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true }}
+              className="mb-12"
+            >
+              <span className="text-[10px] tracking-[0.4em] text-white/40 uppercase mb-4 block">
+                The Visionary
+              </span>
+              <h2
+                className="text-5xl md:text-8xl text-white tracking-tight leading-none"
+                style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300 }}
+              >
+                Meet the <br /><span className="italic">Artist</span>
+              </h2>
+            </motion.div>
 
-            <div className="flex flex-wrap gap-3 pt-6">
-              <span className="px-5 py-2 border border-white/30 text-[10px] md:text-xs tracking-[0.3em] font-light uppercase backdrop-blur-sm">
-                Authentic Moments
-              </span>
-              <span className="px-5 py-2 border border-white/30 text-[10px] md:text-xs tracking-[0.3em] font-light uppercase backdrop-blur-sm">
-                NYC Storytellers
-              </span>
-            </div>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="text-white space-y-8"
+            >
+              <p
+                className="text-xl md:text-2xl lg:text-3xl leading-[1.6] font-light text-white/90"
+                style={{ fontFamily: 'Cormorant Garamond, serif' }}
+              >
+                Based in <span className="italic">New York and New Jersey</span>, I capture 
+                <span className="italic"> elegant, authentic</span> moments with intention. 
+                I believe your story deserves to be documented with excellence.
+              </p>
+
+              <div className="flex flex-wrap gap-4 pt-4">
+                <div className="h-px w-12 bg-white/30 self-center" />
+                <span className="text-[9px] tracking-[0.3em] font-light uppercase text-white/60">
+                  Pochara,
+                </span>
+                <span className="text-[9px] tracking-[0.3em] font-light uppercase text-white/60">
+                  Based in New York
+                </span>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -6,19 +6,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 const STORIES = [
   {
     category: 'ANNA & MATT',
-    image: 'https://images.unsplash.com/photo-1519741196428-6a2175fa2557?auto=format&fit=crop&q=80&w=1600',
+    image: '/img/insta/insta1.webp',
     accent: '#d4a574',
     accentTransparent: 'rgba(212, 165, 116, 0)'
   },
   {
     category: 'MARCELLA & ZACK',
-    image: 'https://images.unsplash.com/photo-1706857753003-394d2ce33079?auto=format&fit=crop&q=80&w=1600',
+    image: '/img/insta/insta2.webp',
     accent: '#c9a959',
     accentTransparent: 'rgba(201, 169, 89, 0)'
   },
   {
     category: 'ELLE & FRANK',
-    image: 'https://images.unsplash.com/photo-1768632066855-4e00e16a22c7?auto=format&fit=crop&q=80&w=1600',
+    image: '/img/insta/insta3.webp',
     accent: '#9b8579',
     accentTransparent: 'rgba(155, 133, 121, 0)'
   }
@@ -36,20 +36,26 @@ export function NarrativeSlider() {
   return (
     <section 
       id="stories" 
-      className="relative min-h-screen bg-[#1a1a1a] px-6 md:px-12 py-24 md:py-32 overflow-hidden"
+      className="relative min-h-screen bg-[#faf9f6] px-6 md:px-12 py-24 md:py-32 overflow-hidden"
       onMouseMove={handleMouseMove}
     >
       <div className="max-w-7xl mx-auto">
-        {/* RESTORED ORIGINAL HEADER STYLE */}
-        <motion.h2
+        
+        {/* UPDATED HEADER: Matches the Footer "FOLLOW THE JOURNEY" Style */}
+        <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-6xl text-white mb-20 text-center tracking-tight"
-          style={{ fontFamily: 'Cormorant Garamond, serif' }}
+          className="text-center mb-16"
         >
-          SELECT STORIES
-        </motion.h2>
+          <h2
+            className="text-4xl md:text-5xl lg:text-6xl text-[#2d3436] mb-6 relative inline-block italic"
+            style={{ fontFamily: 'Cormorant Garamond, serif' }}
+          >
+            SELECT STORIES
+            <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-px bg-black/20" />
+          </h2>
+        </motion.div>
 
         {/* NAVIGATION BUTTONS */}
         <div className="flex flex-wrap justify-center gap-4 md:gap-12 mb-16">
@@ -61,7 +67,7 @@ export function NarrativeSlider() {
               onMouseLeave={() => setIsHovering(false)}
               className="group relative py-4 px-2 text-xs md:text-sm tracking-[0.3em] transition-colors duration-500 uppercase"
               style={{
-                color: activeSlide === index ? 'white' : 'rgba(255,255,255,0.4)',
+                color: activeSlide === index ? '#000000' : 'rgba(0,0,0,0.4)',
               }}
             >
               {story.category}
@@ -78,7 +84,7 @@ export function NarrativeSlider() {
           ))}
         </div>
 
-        {/* IMAGE VIEWPORT - Aspect ratio balanced for portraits */}
+        {/* IMAGE VIEWPORT */}
         <div className="relative aspect-[3/2] max-w-5xl mx-auto overflow-hidden bg-neutral-900 group shadow-2xl">
           <AnimatePresence mode="wait">
             <motion.div
@@ -100,7 +106,7 @@ export function NarrativeSlider() {
           </AnimatePresence>
         </div>
 
-        {/* PAGINATION DOTS */}
+        {/* PAGINATION */}
         <div className="flex justify-center gap-4 mt-12">
           {STORIES.map((story, index) => (
             <button
@@ -109,21 +115,21 @@ export function NarrativeSlider() {
               className="h-1 transition-all duration-700"
               style={{
                 width: activeSlide === index ? '40px' : '12px',
-                backgroundColor: activeSlide === index ? story.accent : 'rgba(255,255,255,0.2)'
+                backgroundColor: activeSlide === index ? story.accent : 'rgba(0,0,0,0.15)'
               }}
             />
           ))}
         </div>
       </div>
 
-      {/* CUSTOM CURSOR OVERLAY */}
+      {/* CUSTOM CURSOR */}
       <AnimatePresence>
         {isHovering && (
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}
-            className="fixed pointer-events-none z-[100] hidden md:block mix-blend-difference"
+            className="fixed pointer-events-none z-[100] hidden md:block"
             style={{
               left: cursorPos.x,
               top: cursorPos.y,
@@ -133,7 +139,7 @@ export function NarrativeSlider() {
             transition={{ type: "spring", stiffness: 150, damping: 20, mass: 0.5 }}
           >
             <div
-              className="px-6 py-3 text-[10px] tracking-[0.3em] font-medium text-white"
+              className="px-6 py-3 text-[10px] tracking-[0.3em] font-medium text-white shadow-xl"
               style={{ backgroundColor: STORIES[activeSlide].accent }}
             >
               EXPLORE

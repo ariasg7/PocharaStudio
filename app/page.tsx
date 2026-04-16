@@ -2,8 +2,13 @@ import { Header } from '../components/header';
 import { Hero } from '../components/hero';
 import { NarrativeSlider } from '../components/narrativeslider';
 import { PersonalNarrative } from '../components/personalnarrative';
+import { ServicesPortfolio } from '../components/servicesportfolio';
 import { VisualCollage } from '../components/visualcollage';
 import { Footer } from '../components/footer';
+
+import { FullPortfolioGrid } from '../components/fullportfoliogrid';
+import { PortfolioPreview } from '@/components/portfoliopreview';
+import { Gallery } from '../components/gallery';
 
 export default function Home() {
   return (
@@ -17,13 +22,17 @@ export default function Home() {
         
         <div className="relative z-10">
           <PersonalNarrative />
-          <NarrativeSlider />
-          <VisualCollage />
+          <Gallery/>
+          {/*<NarrativeSlider />*/}
+          <ServicesPortfolio />
         </div>
       </article>
 
       {/* Contact & Closing */}
       <Footer />
+
+      {/*< FullPortfolioGrid/> */}
+      {/*< PortfolioPreview/>*/}
     </main>
   );
 }
