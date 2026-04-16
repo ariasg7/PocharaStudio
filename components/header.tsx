@@ -3,9 +3,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import Link from 'next/link'; // Import Link if using Next.js
 
 const NAV_LINKS = [
-  { name: 'ABOUT ME', href: '#about me' },
+  { name: 'ABOUT ME', href: '#about-me' }, // Replaced space with hyphen for better ID practice
   { name: 'GALLERY', href: '#gallery' },
   { name: 'SERVICES', href: '#services'},
   { name: 'CONNECT', href: '#connect' },
@@ -17,12 +18,9 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Find the beige section by its ID
       const approachSection = document.getElementById('approach');
       if (approachSection) {
         const rect = approachSection.getBoundingClientRect();
-        // If the top of the beige section hits the top of the screen, turn text dark
-        // We use 80px as a buffer for the header height
         setIsDarkText(rect.top <= 80 && rect.bottom >= 80);
       }
     };
@@ -39,13 +37,19 @@ export function Header() {
       >
         <div className="flex items-center justify-between">
           
-          {/* LOGO */}
-          <div className="flex items-center gap-3 cursor-pointer" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-            <div className="text-2xl md:text-3xl tracking-tight">PS</div>
-            <div className="hidden md:block text-xs tracking-[0.3em] font-light uppercase">
+          {/* LOGO LINKED TO HERO */}
+          <Link 
+            href="/#hero" 
+            className="flex items-center gap-3 cursor-pointer group" 
+            style={{ fontFamily: 'Cormorant Garamond, serif' }}
+          >
+            <div className="text-2xl md:text-3xl tracking-tight group-hover:opacity-70 transition-opacity">
+              PS
+            </div>
+            <div className="hidden md:block text-xs tracking-[0.3em] font-light uppercase group-hover:opacity-70 transition-opacity">
               Pochara STUDIO
             </div>
-          </div>
+          </Link>
 
           {/* NAV (Desktop) */}
           <nav className="hidden md:flex items-center gap-8">

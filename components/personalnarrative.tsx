@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 export function PersonalNarrative() {
   return (
     <section 
-      id="about me" 
+      id="about-me" 
       className="relative min-h-screen bg-[#1a1a1a] px-6 md:px-12 py-24 md:py-48 overflow-hidden"
     >
       <div className="absolute top-10 left-10 pointer-events-none opacity-[0.03] select-none">

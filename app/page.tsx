@@ -5,9 +5,8 @@ import { PersonalNarrative } from '../components/personalnarrative';
 import { ServicesPortfolio } from '../components/servicesportfolio';
 import { VisualCollage } from '../components/visualcollage';
 import { Footer } from '../components/footer';
-
-import { FullPortfolioGrid } from '../components/fullportfoliogrid';
-import { PortfolioPreview } from '@/components/portfoliopreview';
+import { Connect } from '../components/connect';
+import { FinalCTA } from '../components/finalcta';
 import { Gallery } from '../components/gallery';
 
 export default function Home() {
@@ -25,9 +24,11 @@ export default function Home() {
           <Gallery/>
           {/*<NarrativeSlider />*/}
           <ServicesPortfolio />
+
+        <Connect/>
+        <FinalCTA/>
         </div>
       </article>
-
       {/* Contact & Closing */}
       <Footer />
 

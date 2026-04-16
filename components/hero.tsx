@@ -59,7 +59,7 @@ export function Hero() {
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.6 }}
         >
           <button className="group relative border border-white/50 px-12 py-5 hover:border-white hover:text-black transition-all duration-500 text-[10px] tracking-[0.25em] flex items-center gap-4 overflow-hidden">
-            <span className="relative z-10">VIEW THE COLLECTION</span>
+            <span className="relative z-10">INQUIRE</span>
             <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform duration-500 relative z-10" />
             
             {/* Hover Background Slide */}
