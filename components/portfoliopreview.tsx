@@ -4,6 +4,11 @@ import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ChevronLeft, ArrowRight, X } from 'lucide-react';
 
+// HELPER: Automatically creates paths for img1.webp, img2.webp, etc.
+const generateGallery = (folderName: string, totalImages: number) => {
+  return Array.from({ length: totalImages }, (_, i) => `/img/gallery/${folderName}/img${i + 1}.webp`);
+};
+
 const ALL_PROJECTS = [
   { 
     id: "city-hall-1", 
@@ -11,19 +16,10 @@ const ALL_PROJECTS = [
     category: "City Hall", 
     image: "/img/gallery/CityHall1/img1.webp",
     location: "Lower Manhattan",
-    gallery: [
-      "/img/gallery/CityHall1/img1.webp", "/img/gallery/CityHall1/img2.webp",
-      "/img/gallery/CityHall1/img3.webp", "/img/gallery/CityHall1/img4.webp",
-      "/img/gallery/CityHall1/img5.webp", "/img/gallery/CityHall1/img6.webp",
-      "/img/gallery/CityHall1/img7.webp", "/img/gallery/CityHall1/img8.webp",
-      "/img/gallery/CityHall1/img9.webp", "/img/gallery/CityHall1/img10.webp",
-      "/img/gallery/CityHall1/img11.webp", "/img/gallery/CityHall1/img12.webp",
-      "/img/gallery/CityHall1/img13.webp", "/img/gallery/CityHall1/img14.webp",
-      "/img/gallery/CityHall1/img15.webp", "/img/gallery/CityHall1/img16.webp"
-    ] 
+    gallery: generateGallery("CityHall1", 16) 
   },
   { 
-    id: "soho",
+    id: "soho-streets",
     title: "SoHo Streets", 
     category: "Engagements", 
     image: "/img/insta/insta2.webp", 
@@ -39,14 +35,14 @@ export function PortfolioPreview() {
   const [index, setIndex] = useState(0);
   const [isExpanded, setIsExpanded] = useState<null | typeof ALL_PROJECTS[0]>(null);
 
-  // 1. Filter Logic
+  // Filter Logic
   const filteredProjects = useMemo(() => {
     return activeFilter === "All" 
       ? ALL_PROJECTS 
       : ALL_PROJECTS.filter(p => p.category === activeFilter);
   }, [activeFilter]);
 
-  // 2. Navigation Logic
+  // Navigation Logic
   const handleFilterChange = (filter: string) => {
     setActiveFilter(filter);
     setIndex(0); 
@@ -67,7 +63,7 @@ export function PortfolioPreview() {
     return (index + offset + filteredProjects.length) % filteredProjects.length;
   };
 
-  // 3. Escape key to close gallery
+  // Close on Escape
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setIsExpanded(null);
@@ -144,7 +140,7 @@ export function PortfolioPreview() {
                           zIndex: offset === 0 ? 20 : 10,
                         }}
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                        className="absolute w-[280px] md:w-[450px] aspect-[3/4.2] rounded-[2rem] overflow-hidden bg-neutral-900 border border-white/10 cursor-pointer"
+                        className="absolute w-[280px] md:w-[450px] aspect-[3/4.2] rounded-[2rem] overflow-hidden bg-neutral-900 border border-white/10 cursor-pointer shadow-2xl"
                       >
                         <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
                         
@@ -154,7 +150,7 @@ export function PortfolioPreview() {
                             <h3 className="text-3xl font-bold text-white mb-6">{project.title}</h3>
                             <button 
                               onClick={() => setIsExpanded(project)}
-                              className="w-full bg-white py-4 rounded-full text-[10px] tracking-[0.2em] font-bold text-black flex items-center justify-center gap-2 hover:bg-neutral-200 transition-colors"
+                              className="w-full bg-white py-4 rounded-full text-[10px] tracking-[0.2em] font-bold text-black flex items-center justify-center gap-2 hover:bg-neutral-100 transition-colors"
                             >
                               VIEW FULL STORY <ArrowRight size={14} />
                             </button>
@@ -187,7 +183,7 @@ export function PortfolioPreview() {
               <X size={24} />
             </button>
 
-            <div className="max-w-5xl mx-auto py-24 px-6">
+            <div className="max-w-6xl mx-auto py-24 px-6">
               <motion.div 
                 layoutId={`card-${isExpanded.id}`}
                 className="mb-20 text-center"
@@ -199,14 +195,19 @@ export function PortfolioPreview() {
                 <p className="text-white/40 text-xs tracking-widest uppercase">{isExpanded.location}</p>
               </motion.div>
 
+              {/* Masonry Style Grid */}
               <div className="columns-1 md:columns-2 gap-8 space-y-8">
                 {isExpanded.gallery?.map((img, i) => (
                   <motion.div 
                     key={i}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.1, duration: 0.8 }}
-                    className="break-inside-avoid rounded-sm overflow-hidden bg-neutral-900"
+                    initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ 
+                      duration: 0.8, 
+                      delay: i * 0.1,
+                      ease: [0.215, 0.61, 0.355, 1] 
+                    }}
+                    className="break-inside-avoid rounded-sm overflow-hidden bg-neutral-900 border border-white/5"
                   >
                     <img src={img} className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" alt="Gallery shot" />
                   </motion.div>
