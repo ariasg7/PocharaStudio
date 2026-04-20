@@ -1,18 +1,26 @@
 "use client";
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ChevronLeft, ArrowRight, X } from 'lucide-react';
 
 const ALL_PROJECTS = [
   { 
-    id: "hudson", 
-    title: "The Hudson Valley", 
-    category: "Weddings", 
-    image: "/img/insta/insta1.webp", 
-    location: "Upstate NY",
-    // Mock gallery images for this specific project
-    gallery: ["/img/insta/insta1.webp", "/img/insta/insta2.webp", "/img/insta/insta3.webp", "/img/insta/insta4.webp"] 
+    id: "city-hall-1", 
+    title: "NYC City Hall", 
+    category: "City Hall", 
+    image: "/img/gallery/CityHall1/img1.webp",
+    location: "Lower Manhattan",
+    gallery: [
+      "/img/gallery/CityHall1/img1.webp", "/img/gallery/CityHall1/img2.webp",
+      "/img/gallery/CityHall1/img3.webp", "/img/gallery/CityHall1/img4.webp",
+      "/img/gallery/CityHall1/img5.webp", "/img/gallery/CityHall1/img6.webp",
+      "/img/gallery/CityHall1/img7.webp", "/img/gallery/CityHall1/img8.webp",
+      "/img/gallery/CityHall1/img9.webp", "/img/gallery/CityHall1/img10.webp",
+      "/img/gallery/CityHall1/img11.webp", "/img/gallery/CityHall1/img12.webp",
+      "/img/gallery/CityHall1/img13.webp", "/img/gallery/CityHall1/img14.webp",
+      "/img/gallery/CityHall1/img15.webp", "/img/gallery/CityHall1/img16.webp"
+    ] 
   },
   { 
     id: "soho",
@@ -21,8 +29,7 @@ const ALL_PROJECTS = [
     image: "/img/insta/insta2.webp", 
     location: "Manhattan",
     gallery: ["/img/insta/insta2.webp", "/img/hero/img1.webp", "/img/hero/img3.webp"] 
-  },
-  // ... rest of projects
+  }
 ];
 
 const FILTERS = ["All", "Weddings", "Engagements", "City Hall"];
@@ -32,101 +39,147 @@ export function PortfolioPreview() {
   const [index, setIndex] = useState(0);
   const [isExpanded, setIsExpanded] = useState<null | typeof ALL_PROJECTS[0]>(null);
 
+  // 1. Filter Logic
   const filteredProjects = useMemo(() => {
     return activeFilter === "All" 
       ? ALL_PROJECTS 
       : ALL_PROJECTS.filter(p => p.category === activeFilter);
   }, [activeFilter]);
 
+  // 2. Navigation Logic
   const handleFilterChange = (filter: string) => {
     setActiveFilter(filter);
-    setIndex(0);
+    setIndex(0); 
   };
 
-  const nextStep = () => setIndex((prev) => (prev + 1) % filteredProjects.length);
-  const prevStep = () => setIndex((prev) => (prev - 1 + filteredProjects.length) % filteredProjects.length);
-  const getIndex = (offset: number) => (index + offset + filteredProjects.length) % filteredProjects.length;
+  const nextStep = () => {
+    if (filteredProjects.length === 0) return;
+    setIndex((prev) => (prev + 1) % filteredProjects.length);
+  };
+
+  const prevStep = () => {
+    if (filteredProjects.length === 0) return;
+    setIndex((prev) => (prev - 1 + filteredProjects.length) % filteredProjects.length);
+  };
+
+  const getIndex = (offset: number) => {
+    if (filteredProjects.length === 0) return 0;
+    return (index + offset + filteredProjects.length) % filteredProjects.length;
+  };
+
+  // 3. Escape key to close gallery
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsExpanded(null);
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, []);
 
   return (
     <section id="gallery" className="bg-[#1a1a1a] py-12 md:py-32 px-4 md:px-6 overflow-hidden relative min-h-screen flex flex-col justify-center">
       
-      {/* 1. THE CAROUSEL VIEW (Only shown when nothing is expanded) */}
-      <AnimatePresence>
-        {!isExpanded && (
+      <AnimatePresence mode="wait">
+        {!isExpanded ? (
           <motion.div 
-            exit={{ opacity: 0, scale: 0.9 }}
+            key="carousel-view"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
             className="max-w-[1400px] mx-auto relative z-10 w-full"
           >
-            {/* HEADER */}
-            <div className="text-center mb-12 space-y-4">
-              <span className="text-[10px] tracking-[0.6em] text-white/40 uppercase font-light">Selected Works</span>
-              <h2 className="text-6xl md:text-9xl text-white font-serif italic" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-                Visual Diary
-              </h2>
-            </div>
-
-            {/* CAROUSEL */}
-            <div className="relative flex items-center justify-center h-[500px] md:h-[700px] w-full">
-              {/* NAV ARROWS */}
-              <div className="absolute inset-0 flex items-center justify-between z-[60] pointer-events-none px-4">
-                <button onClick={prevStep} className="pointer-events-auto w-12 h-12 rounded-full border border-white/10 text-white hover:bg-white hover:text-black transition-all">
-                  <ChevronLeft size={24} />
-                </button>
-                <button onClick={nextStep} className="pointer-events-auto w-12 h-12 rounded-full border border-white/10 text-white hover:bg-white hover:text-black transition-all">
-                  <ChevronRight size={24} />
-                </button>
+            {/* HEADER & FILTERS */}
+            <div className="text-center mb-16 space-y-8">
+              <div className="space-y-2">
+                <span className="text-[10px] tracking-[0.6em] text-white/40 uppercase font-light">Selected Works</span>
+                <h2 className="text-6xl md:text-9xl text-white font-serif italic" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+                  Visual Diary
+                </h2>
               </div>
 
-              {/* CENTER CARD */}
-              <div className="relative flex items-center justify-center w-full max-w-5xl h-full">
-                {[-1, 0, 1].map((offset) => {
-                  const project = filteredProjects[getIndex(offset)];
-                  if (!project) return null;
-
-                  return (
-                    <motion.div
-                      key={project.id + offset}
-                      layoutId={offset === 0 ? `card-${project.id}` : undefined}
-                      animate={{ 
-                        opacity: offset === 0 ? 1 : 0.1, 
-                        scale: offset === 0 ? 1 : 0.8,
-                        x: offset * (window.innerWidth < 768 ? 160 : 450),
-                        zIndex: offset === 0 ? 20 : 10,
-                      }}
-                      className="absolute w-[280px] md:w-[450px] aspect-[3/4.2] rounded-[2rem] overflow-hidden bg-neutral-900 border border-white/10 cursor-pointer"
-                    >
-                      <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-                      
-                      {offset === 0 && (
-                        <div className="absolute inset-0 flex flex-col justify-end p-10 bg-gradient-to-t from-[#1a1a1a] to-transparent">
-                          <h3 className="text-3xl font-bold text-white mb-6">{project.title}</h3>
-                          <button 
-                            onClick={() => setIsExpanded(project)}
-                            className="w-full bg-white py-4 rounded-full text-[10px] tracking-[0.2em] font-bold text-black flex items-center justify-center gap-2"
-                          >
-                            VIEW FULL STORY <ArrowRight size={14} />
-                          </button>
-                        </div>
-                      )}
-                    </motion.div>
-                  );
-                })}
-              </div>
+              <nav className="flex flex-wrap justify-center gap-x-8 gap-y-4">
+                {FILTERS.map((filter) => (
+                  <button
+                    key={filter}
+                    onClick={() => handleFilterChange(filter)}
+                    className={`text-[10px] tracking-[0.3em] uppercase transition-all duration-500 pb-2 border-b ${
+                      activeFilter === filter 
+                        ? "text-white border-white" 
+                        : "text-white/30 border-transparent hover:text-white/60"
+                    }`}
+                  >
+                    {filter}
+                  </button>
+                ))}
+              </nav>
             </div>
+
+            {/* CAROUSEL BODY */}
+            {filteredProjects.length > 0 ? (
+              <div className="relative flex items-center justify-center h-[500px] md:h-[700px] w-full">
+                {/* NAV ARROWS */}
+                <div className="absolute inset-0 flex items-center justify-between z-[60] pointer-events-none px-4">
+                  <button onClick={prevStep} className="pointer-events-auto w-12 h-12 rounded-full border border-white/10 text-white hover:bg-white hover:text-black transition-all flex items-center justify-center">
+                    <ChevronLeft size={24} />
+                  </button>
+                  <button onClick={nextStep} className="pointer-events-auto w-12 h-12 rounded-full border border-white/10 text-white hover:bg-white hover:text-black transition-all flex items-center justify-center">
+                    <ChevronRight size={24} />
+                  </button>
+                </div>
+
+                {/* CARDS */}
+                <div className="relative flex items-center justify-center w-full max-w-5xl h-full">
+                  {[-1, 0, 1].map((offset) => {
+                    const project = filteredProjects[getIndex(offset)];
+                    if (!project) return null;
+
+                    return (
+                      <motion.div
+                        key={`${project.id}-${activeFilter}-${offset}`}
+                        layoutId={offset === 0 ? `card-${project.id}` : undefined}
+                        animate={{ 
+                          opacity: offset === 0 ? 1 : 0.1, 
+                          scale: offset === 0 ? 1 : 0.8,
+                          x: offset * (typeof window !== 'undefined' && window.innerWidth < 768 ? 160 : 450),
+                          zIndex: offset === 0 ? 20 : 10,
+                        }}
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        className="absolute w-[280px] md:w-[450px] aspect-[3/4.2] rounded-[2rem] overflow-hidden bg-neutral-900 border border-white/10 cursor-pointer"
+                      >
+                        <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                        
+                        {offset === 0 && (
+                          <div className="absolute inset-0 flex flex-col justify-end p-10 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/20 to-transparent">
+                            <p className="text-[10px] tracking-[0.3em] text-white/50 mb-2 uppercase">{project.category}</p>
+                            <h3 className="text-3xl font-bold text-white mb-6">{project.title}</h3>
+                            <button 
+                              onClick={() => setIsExpanded(project)}
+                              className="w-full bg-white py-4 rounded-full text-[10px] tracking-[0.2em] font-bold text-black flex items-center justify-center gap-2 hover:bg-neutral-200 transition-colors"
+                            >
+                              VIEW FULL STORY <ArrowRight size={14} />
+                            </button>
+                          </div>
+                        )}
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (
+              <div className="h-[400px] flex items-center justify-center text-white/20 tracking-widest uppercase text-xs">
+                Coming Soon to this category
+              </div>
+            )}
           </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* 2. THE EXPANDED GALLERY VIEW */}
-      <AnimatePresence>
-        {isExpanded && (
+        ) : (
+          /* EXPANDED GALLERY VIEW */
           <motion.div 
+            key="gallery-view"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] bg-[#1a1a1a] overflow-y-auto"
           >
-            {/* CLOSE BUTTON */}
             <button 
               onClick={() => setIsExpanded(null)}
               className="fixed top-10 right-10 z-[110] w-14 h-14 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
@@ -134,7 +187,6 @@ export function PortfolioPreview() {
               <X size={24} />
             </button>
 
-            {/* EXPANDED CONTENT */}
             <div className="max-w-5xl mx-auto py-24 px-6">
               <motion.div 
                 layoutId={`card-${isExpanded.id}`}
@@ -147,28 +199,26 @@ export function PortfolioPreview() {
                 <p className="text-white/40 text-xs tracking-widest uppercase">{isExpanded.location}</p>
               </motion.div>
 
-              {/* IMAGE GRID - This is where the specific portfolio lives */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="columns-1 md:columns-2 gap-8 space-y-8">
                 {isExpanded.gallery?.map((img, i) => (
                   <motion.div 
                     key={i}
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    className="aspect-[3/4] bg-neutral-900 overflow-hidden rounded-lg"
+                    transition={{ delay: i * 0.1, duration: 0.8 }}
+                    className="break-inside-avoid rounded-sm overflow-hidden bg-neutral-900"
                   >
-                    <img src={img} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Gallery item" />
+                    <img src={img} className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" alt="Gallery shot" />
                   </motion.div>
                 ))}
               </div>
 
-              {/* FOOTER CTA */}
               <div className="mt-32 text-center pb-20">
                  <button 
                    onClick={() => setIsExpanded(null)}
-                   className="text-white/40 hover:text-white transition-colors tracking-[0.4em] text-[10px]"
+                   className="text-white/40 hover:text-white transition-colors tracking-[0.4em] text-[10px] uppercase underline underline-offset-8"
                  >
-                    BACK TO DIARY
+                    Back to Diary
                  </button>
               </div>
             </div>
