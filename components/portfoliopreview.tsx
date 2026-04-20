@@ -19,12 +19,20 @@ const ALL_PROJECTS = [
     gallery: generateGallery("CityHall1", 16) 
   },
   { 
-    id: "soho-streets",
-    title: "SoHo Streets", 
-    category: "Engagements", 
-    image: "/img/insta/insta2.webp", 
-    location: "Manhattan",
-    gallery: ["/img/insta/insta2.webp", "/img/hero/img1.webp", "/img/hero/img3.webp"] 
+    id: "city-hall-2", 
+    title: "NYC City Hall", 
+    category: "City Hall", 
+    image: "/img/gallery/CityHall2/img1.webp",
+    location: "City Hall",
+    gallery: generateGallery("CityHall2", 20) 
+  },
+  { 
+    id: "city-hall-3", 
+    title: "NYC Central Park", 
+    category: "City Hall", 
+    image: "/img/gallery/CityHall3/img1.webp",
+    location: "Central Park",
+    gallery: generateGallery("CityHall3", 15) 
   }
 ];
 

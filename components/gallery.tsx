@@ -7,9 +7,9 @@ import { useRef } from 'react';
 
 const FEATURED_PRINTS = [
   { url: "/img/insta/insta1.webp", x: "-18%", y: "-15%", rotate: -4, size: "w-48 md:w-72" },
-  { url: "/img/insta/insta2.webp", x: "22%", y: "10%", rotate: 6, size: "w-56 md:w-80" },
+  { url: "/img/gallery/CityHall3/img8.webp", x: "22%", y: "10%", rotate: 6, size: "w-56 md:w-80" },
   { url: "/img/insta/insta3.webp", x: "-28%", y: "35%", rotate: -8, size: "w-40 md:w-64" },
-  { url: "/img/insta/insta5.webp", x: "12%", y: "45%", rotate: 2, size: "w-64 md:w-96" },
+  { url: "/img/gallery/CityHall1/img3.webp", x: "12%", y: "45%", rotate: 2, size: "w-64 md:w-96" },
 ];
 
 export function Gallery() {

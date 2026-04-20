@@ -16,7 +16,7 @@ export default function Home() {
       <Header />
 
       {/* Main Content Sections */}
-      <article>
+
         <Hero />
         
         <div className="relative z-10">
@@ -29,7 +29,6 @@ export default function Home() {
         <Connect/>
         <FinalCTA/>
         </div>
-      </article>
       {/* Contact & Closing */}
       <Footer />
 

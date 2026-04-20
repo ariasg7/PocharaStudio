@@ -20,7 +20,7 @@ const SERVICES = [
     title: "City Hall",
     subtitle: "NYC ELOPEMENTS",
     description: "For those choosing the effortless romance of an NYC elopement. Documented with a timeless, cinematic eye.",
-    image: "https://images.unsplash.com/photo-1652107258371-da96c470b245?auto=format&fit=crop&q=80&w=800",
+    image: "/img/gallery/CityHall2/img1.webp",
   }
 ];
 
@@ -38,9 +38,19 @@ function ServiceSection({ service, index }: { service: typeof SERVICES[0], index
   return (
     <div 
       ref={sectionRef} 
-      className="relative min-h-[90vh] flex items-center justify-center py-20"
+      className="relative min-h-[90vh] w-full flex items-center justify-center py-20 overflow-hidden"
     >
-      <div className={`max-w-7xl w-full px-6 md:px-12 flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-16 md:gap-24`}>
+      {/* 1. THE WATERMARK "CAGE" - This prevents the horizontal scroll */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+        <div className={`absolute top-1/2 ${isEven ? 'right-0 translate-x-1/4' : 'left-0 -translate-x-1/4'} -translate-y-1/2 opacity-[0.03] hidden lg:block`}>
+          <p className="text-[28vw] font-serif italic text-[#1a1a1a] leading-none m-0 p-0 whitespace-nowrap">
+            {service.title.split(' ')[0]}
+          </p>
+        </div>
+      </div>
+
+      {/* 2. THE CONTENT LAYER */}
+      <div className={`max-w-7xl w-full px-6 md:px-12 flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-16 md:gap-24 relative z-10`}>
         
         {/* IMAGE FRAME */}
         <div className="relative w-full md:w-3/5 aspect-[4/5] md:aspect-[3/4] overflow-hidden bg-neutral-200 shadow-xl">
@@ -52,7 +62,7 @@ function ServiceSection({ service, index }: { service: typeof SERVICES[0], index
           />
         </div>
 
-        {/* CONTENT - Inverted to dark text */}
+        {/* TEXT CONTENT */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -92,20 +102,13 @@ function ServiceSection({ service, index }: { service: typeof SERVICES[0], index
           </div>
         </motion.div>
       </div>
-
-      {/* BACKGROUND WATERMARK - Inverted to dark/low-opacity */}
-      <div className={`absolute top-1/2 ${isEven ? 'right-0' : 'left-0'} -translate-y-1/2 opacity-[0.03] pointer-events-none select-none hidden lg:block`}>
-        <span className="text-[30vw] font-serif italic text-[#1a1a1a] whitespace-nowrap">
-          {service.title.split(' ')[0]}
-        </span>
-      </div>
     </div>
   );
 }
 
 export function ServicesPortfolio() {
   return (
-    <section id="services" className="bg-[#F5F2ED] relative">
+    <section id="services" className="bg-[#F5F2ED] relative w-full overflow-x-hidden">
       
       {/* SECTION INTRO */}
       <div className="pt-48 pb-12 px-6 text-center">
@@ -120,7 +123,8 @@ export function ServicesPortfolio() {
         <div className="h-px w-32 bg-gradient-to-r from-transparent via-[#1a1a1a]/20 to-transparent mx-auto mt-12" />
       </div>
 
-      <div className="relative">
+      {/* RENDER SECTIONS */}
+      <div className="relative w-full">
         {SERVICES.map((service, index) => (
           <ServiceSection key={service.title} service={service} index={index} />
         ))}
