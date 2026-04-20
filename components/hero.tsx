@@ -20,10 +20,17 @@ export function Hero() {
         aria-hidden="true"
       >
         {/* Standard HTML Image Tag */}
+        {/*
         <img
           src="https://images.unsplash.com/photo-1763140615918-a4af28eb6a71?auto=format&fit=crop&q=80&w=1920"
           alt="Cinematic wedding moment"
           className="w-full h-full object-cover opacity-60 grayscale-[0.2] brightness-[0.8]"
+          loading="eager" // Forces immediate load since it's the first thing seen
+        />*/}
+        <img
+          src="/img/hero/img1.webp"
+          alt="Cinematic wedding moment"
+          className="w-full h-full object-cover opacity-60 grayscale brightness-[0.8]"
           loading="eager" // Forces immediate load since it's the first thing seen
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />

@@ -21,9 +21,10 @@ export default function Home() {
         
         <div className="relative z-10">
           <PersonalNarrative />
+          <ServicesPortfolio />
           <Gallery/>
           {/*<NarrativeSlider />*/}
-          <ServicesPortfolio />
+          
 
         <Connect/>
         <FinalCTA/>
