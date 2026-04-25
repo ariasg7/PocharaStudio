@@ -6,10 +6,11 @@ import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 
 const NAV_LINKS = [
-  { name: 'ABOUT ME', href: '#about-me' },
-  { name: 'SERVICES', href: '#services'},
-  { name: 'GALLERY', href: '#gallery' },
-  { name: 'CONNECT', href: '#connect' },
+  { name: 'ABOUT ME', href: '/#about-me' }, // Use /# to ensure it works from the gallery page too
+  { name: 'SERVICES', href: '/#services'},
+  { name: 'GALLERY', href: '/gallery' },    // DIRECT LINK TO PAGE
+  { name: 'REVIEWS', href: '/#reviews'},
+  { name: 'CONNECT', href: '/#connect' }
 ];
 
 export function Header() {
@@ -19,11 +20,10 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // 1. Solid background trigger (scrolled 50px)
       setIsScrolled(window.scrollY > 50);
 
-      // 2. Text color detection for visibility
-      const lightSections = ['approach', 'services', 'about-me'];
+      // Added 'reviews' and 'connect' to detection if they are light sections
+      const lightSections = ['approach', 'services', 'about-me']; 
       let overlayingLightSection = false;
 
       lightSections.forEach((id) => {
@@ -58,7 +58,7 @@ export function Header() {
         <div className="flex items-center justify-between">
           
           <Link 
-            href="/#hero" 
+            href="/" 
             className="flex items-center gap-3 cursor-pointer group" 
             style={{ fontFamily: 'Cormorant Garamond, serif' }}
           >
@@ -73,13 +73,13 @@ export function Header() {
           {/* NAV (Desktop) */}
           <nav className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
-              <a 
+              <Link 
                 key={link.name} 
                 href={link.href} 
-                className="text-[10px] tracking-[0.3em] font-medium hover:opacity-50 transition-opacity"
+                className="text-[10px] tracking-[0.3em] font-medium hover:opacity-50 transition-opacity uppercase"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -108,7 +108,7 @@ export function Header() {
             </button>
             <nav className="flex flex-col items-center gap-10">
               {NAV_LINKS.map((link) => (
-                <a 
+                <Link 
                   key={link.name} 
                   href={link.href} 
                   onClick={() => setIsMenuOpen(false)}
@@ -116,7 +116,7 @@ export function Header() {
                   style={{ fontFamily: 'Cormorant Garamond, serif' }}
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
             </nav>
           </motion.div>

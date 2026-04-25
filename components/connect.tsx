@@ -26,7 +26,7 @@ const itemVariants = {
 
 export function Connect() {
   return (
-    <section id="connect" className="bg-[#faf9f6] px-6 md:px-12 py-24 md:pt-32 pb-12">
+    <section id="connect" className="bg-[#1a1a1a] px-6 md:px-12 py-24 md:pt-32 pb-12">
       <div className="max-w-7xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -35,11 +35,11 @@ export function Connect() {
           className="text-center mb-16"
         >
           <h2
-            className="text-4xl md:text-5xl lg:text-6xl text-[#2d3436] mb-6 relative inline-block italic"
+            className="text-4xl md:text-5xl lg:text-6xl text-white mb-6 relative inline-block italic font-light"
             style={{ fontFamily: 'Cormorant Garamond, serif' }}
           >
             FOLLOW THE JOURNEY
-            <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-px bg-[#2d3436]" />
+            <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-px bg-white/30" />
           </h2>
         </motion.div>
 
@@ -58,15 +58,15 @@ export function Connect() {
               rel="noopener noreferrer"
               variants={itemVariants}
               whileHover={{ scale: 1.02 }}
-              className="relative group cursor-pointer overflow-hidden aspect-square bg-neutral-200 block"
+              className="relative group cursor-pointer overflow-hidden aspect-square bg-neutral-900 block"
             >
               <img
                 src={post.url}
                 alt={`Instagram ${post.id}`}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-[2px]">
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-[2px]">
                 <div className="text-white text-center font-light tracking-widest text-[10px]">
                   <p>VIEW ON INSTAGRAM</p>
                   <div className="flex gap-4 mt-2 justify-center opacity-80">

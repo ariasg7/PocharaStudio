@@ -1,6 +1,5 @@
 import { Header } from '../components/header';
 import { Hero } from '../components/hero';
-import { NarrativeSlider } from '../components/narrativeslider';
 import { PersonalNarrative } from '../components/personalnarrative';
 import { ServicesPortfolio } from '../components/servicesportfolio';
 import { VisualCollage } from '../components/visualcollage';
@@ -8,6 +7,7 @@ import { Footer } from '../components/footer';
 import { Connect } from '../components/connect';
 import { FinalCTA } from '../components/finalcta';
 import { Gallery } from '../components/gallery';
+import { Reviews } from '../components/reviews';
 
 export default function Home() {
   return (
@@ -23,7 +23,7 @@ export default function Home() {
           <PersonalNarrative />
           <ServicesPortfolio />
           <Gallery/>
-          {/*<NarrativeSlider />*/}
+          <Reviews/>
           
 
         <Connect/>
