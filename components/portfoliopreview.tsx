@@ -33,6 +33,22 @@ const ALL_PROJECTS = [
     image: "/img/gallery/CityHall3/img1.webp",
     location: "Central Park",
     gallery: generateGallery("CityHall3", 15) 
+  },
+  { 
+    id: "city-hall-4", 
+    title: "NYC", 
+    category: "Empire", 
+    image: "/img/gallery/CityHall4/img1.webp",
+    location: "Central Park",
+    gallery: generateGallery("CityHall4", 26) 
+  },
+  { 
+    id: "engagement-1", 
+    title: "NYC", 
+    category: "Garden", 
+    image: "/img/gallery/Engagement1/img1.webp",
+    location: "Central Park",
+    gallery: generateGallery("Engagement1", 13) 
   }
 ];
 
