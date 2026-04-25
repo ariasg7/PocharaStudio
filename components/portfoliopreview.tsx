@@ -37,7 +37,7 @@ const ALL_PROJECTS = [
   { 
     id: "city-hall-4", 
     title: "NYC", 
-    category: "Empire", 
+    category: "City Hall", 
     image: "/img/gallery/CityHall4/img1.webp",
     location: "Central Park",
     gallery: generateGallery("CityHall4", 26) 
@@ -45,10 +45,50 @@ const ALL_PROJECTS = [
   { 
     id: "engagement-1", 
     title: "NYC", 
-    category: "Garden", 
+    category: "Engagements", 
     image: "/img/gallery/Engagement1/img1.webp",
     location: "Central Park",
     gallery: generateGallery("Engagement1", 13) 
+  },
+  { 
+    id: "engagement-2", 
+    title: "NYC", 
+    category: "Engagements", 
+    image: "/img/gallery/Engagement2/img1.webp",
+    location: "Central Park",
+    gallery: generateGallery("Engagement2", 32) 
+  },
+  { 
+    id: "engagement-3", 
+    title: "NYC", 
+    category: "Engagements", 
+    image: "/img/gallery/Engagement3/img1.webp",
+    location: "Central Park",
+    gallery: generateGallery("Engagement3", 28) 
+  },
+  { 
+    id: "wedding-1", 
+    title: "NYC", 
+    category: "Weddings", 
+    image: "/img/gallery/Wedding1/img1.webp",
+    location: "Central Park",
+    gallery: generateGallery("Wedding1", 26) 
+  },
+  { 
+    id: "wedding-2", 
+    title: "NYC", 
+    category: "Weddings", 
+    image: "/img/gallery/Wedding2/img1.webp",
+    location: "Central Park",
+    gallery: generateGallery("Wedding2", 16) 
+  },
+  { 
+    id: "wedding-3", 
+    title: "NYC", 
+    category: "Weddings", 
+    image: "/img/gallery/Wedding3/img1.webp",
+    location: "Central Park",
+    gallery: generateGallery("Wedding3", 27) 
   }
 ];
 
