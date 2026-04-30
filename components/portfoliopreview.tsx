@@ -12,7 +12,7 @@ const generateGallery = (folderName: string, totalImages: number) => {
 const ALL_PROJECTS = [
   { 
     id: "city-hall-1", 
-    title: "NYC City Hall", 
+    title: "CT City Hall", 
     category: "City Hall", 
     image: "/img/gallery/CityHall1/img1.webp",
     location: "Lower Manhattan",
