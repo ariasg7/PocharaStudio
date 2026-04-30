@@ -32,7 +32,7 @@ const ALL_PROJECTS = [
     category: "City Hall", 
     image: "/img/gallery/CityHall3/img1.webp",
     location: "Central Park",
-    gallery: generateGallery("CityHall3", 15) 
+    gallery: generateGallery("CityHall3", 16) 
   },
   { 
     id: "city-hall-4", 
