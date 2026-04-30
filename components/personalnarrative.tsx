@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export function PersonalNarrative() {
   return (
@@ -73,7 +75,7 @@ export function PersonalNarrative() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
               viewport={{ once: true }}
-              className="text-white space-y-8"
+              className="text-white space-y-12"
             >
               <p
                 className="text-xl md:text-2xl lg:text-3xl leading-[1.6] font-light text-white/90"
@@ -83,6 +85,22 @@ export function PersonalNarrative() {
                 <span className="italic"> elegant, authentic</span> moments with intention. 
                 I believe your story deserves to be documented with excellence.
               </p>
+
+              {/* ACTION BUTTON */}
+              <div>
+                <Link 
+                  href="/about" 
+                  className="group relative inline-flex items-center gap-4 border border-white/30 px-10 py-5 overflow-hidden transition-all hover:border-white"
+                >
+                  <span className="relative z-10 text-[10px] tracking-[0.3em] uppercase group-hover:text-black transition-colors duration-500">
+                    Learn More
+                  </span>
+                  <ArrowRight size={14} className="relative z-10 group-hover:translate-x-2 group-hover:text-black transition-all duration-500" />
+                  
+                  {/* Hover Background Slide */}
+                  <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                </Link>
+              </div>
 
               <div className="flex flex-wrap gap-4 pt-4">
                 <div className="h-px w-12 bg-white/30 self-center" />
