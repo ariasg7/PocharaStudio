@@ -6,9 +6,9 @@ import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 
 const NAV_LINKS = [
-  { name: 'ABOUT ME', href: '/#about-me' }, // Use /# to ensure it works from the gallery page too
+  { name: 'ABOUT ME', href: '/#about-me' },
   { name: 'SERVICES', href: '/#services'},
-  { name: 'GALLERY', href: '/gallery' },    // DIRECT LINK TO PAGE
+  { name: 'GALLERY', href: '/gallery' },
   { name: 'REVIEWS', href: '/#reviews'},
   { name: 'CONNECT', href: '/#connect' }
 ];
@@ -22,7 +22,6 @@ export function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Added 'reviews' and 'connect' to detection if they are light sections
       const lightSections = ['approach', 'services', 'about-me']; 
       let overlayingLightSection = false;
 
@@ -57,15 +56,13 @@ export function Header() {
       >
         <div className="flex items-center justify-between">
           
+          {/* BRANDING SECTION - PS REMOVED */}
           <Link 
             href="/" 
-            className="flex items-center gap-3 cursor-pointer group" 
+            className="cursor-pointer group" 
             style={{ fontFamily: 'Cormorant Garamond, serif' }}
           >
-            <div className="text-2xl md:text-3xl tracking-tight group-hover:opacity-70 transition-opacity font-medium">
-              PS
-            </div>
-            <div className="hidden md:block text-xs tracking-[0.3em] font-light uppercase group-hover:opacity-70 transition-opacity">
+            <div className="text-sm md:text-base tracking-[0.4em] font-light uppercase group-hover:opacity-70 transition-opacity whitespace-nowrap">
               Pochara STUDIO
             </div>
           </Link>
@@ -86,9 +83,9 @@ export function Header() {
           {/* MOBILE TOGGLE */}
           <button 
             onClick={() => setIsMenuOpen(true)} 
-            className="md:hidden p-2 transition-colors"
+            className="md:hidden p-2 transition-colors -mr-2"
           >
-            <Menu size={28} />
+            <Menu size={24} />
           </button>
         </div>
       </header>
