@@ -19,7 +19,7 @@ export function FinalCTA() {
         </p>
         
         <a 
-          href="mailto:hello@pocharastudio.com"
+          href="mailto:shootwithpochara@gmail.com"
           className="group relative inline-block overflow-hidden bg-[#2d3436] text-white px-12 py-5 text-[10px] tracking-[0.3em] transition-all hover:bg-[#1a1a1a] rounded-sm"
         >
           <span className="relative z-10">INQUIRE HERE</span>

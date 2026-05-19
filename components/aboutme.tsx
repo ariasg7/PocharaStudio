@@ -18,19 +18,19 @@ const PHILOSOPHY = [
   {
     number: "03",
     title: "The Legacy",
-    description: "We are building a visual archive that will be passed down through generations—timeless, elegant, and true.",
+    description: "We are building a visual archive that will be passed down through generations: timeless, elegant, and true.",
     image: "/img/gallery/CityHall3/img9.webp"
   }
 ];
 
 const GEAR_COLLECTION = [
   {
-    name: "Contax 645",
+    name: "Canon 5D MK4",
     type: "Medium Format Film",
     description: "The gold standard for wedding portraiture. It captures skin tones and light with a soft, painterly quality that digital cannot replicate."
   },
   {
-    name: "Leica M11",
+    name: "Canon 5D MK4",
     type: "Digital Rangefinder",
     description: "Discreet and silent. Used for candid, documentary moments where being 'invisible' allows for the most honest stories."
   }
@@ -52,7 +52,7 @@ export function AboutMe() {
             >
               <div className="aspect-[3/4] bg-neutral-800 overflow-hidden shadow-2xl relative">
                 <img 
-                  src="/img/about/portrait.webp" 
+                  src="/img/narrative/narrative1.JPG" 
                   alt="Pochara" 
                   className="w-full h-full object-cover grayscale opacity-80"
                 />

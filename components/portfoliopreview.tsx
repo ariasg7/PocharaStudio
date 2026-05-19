@@ -20,7 +20,7 @@ const ALL_PROJECTS = [
   },
   { 
     id: "city-hall-2", 
-    title: "NYC City Hall", 
+    title: "Zack & Marcella", 
     category: "City Hall", 
     image: "/img/gallery/CityHall2/img1.webp",
     location: "City Hall",
@@ -28,7 +28,7 @@ const ALL_PROJECTS = [
   },
   { 
     id: "city-hall-3", 
-    title: "NYC Central Park", 
+    title: "Lisa & Ryan", 
     category: "City Hall", 
     image: "/img/gallery/CityHall3/img1.webp",
     location: "Central Park",
@@ -36,7 +36,7 @@ const ALL_PROJECTS = [
   },
   { 
     id: "city-hall-4", 
-    title: "NYC", 
+    title: "John & Mory", 
     category: "City Hall", 
     image: "/img/gallery/CityHall4/img1.webp",
     location: "Central Park",
@@ -44,7 +44,7 @@ const ALL_PROJECTS = [
   },
   { 
     id: "engagement-1", 
-    title: "NYC", 
+    title: "John & Mory", 
     category: "Engagements", 
     image: "/img/gallery/Engagement1/img1.webp",
     location: "Central Park",
@@ -52,7 +52,7 @@ const ALL_PROJECTS = [
   },
   { 
     id: "engagement-2", 
-    title: "NYC", 
+    title: "Anna & Michael", 
     category: "Engagements", 
     image: "/img/gallery/Engagement2/img1.webp",
     location: "Central Park",
@@ -60,7 +60,7 @@ const ALL_PROJECTS = [
   },
   { 
     id: "engagement-3", 
-    title: "NYC", 
+    title: "Matthew & Bella", 
     category: "Engagements", 
     image: "/img/gallery/Engagement3/img1.webp",
     location: "Central Park",
@@ -68,7 +68,7 @@ const ALL_PROJECTS = [
   },
   { 
     id: "wedding-1", 
-    title: "NYC", 
+    title: "Walima Family", 
     category: "Weddings", 
     image: "/img/gallery/Wedding1/img1.webp",
     location: "Central Park",
@@ -76,7 +76,7 @@ const ALL_PROJECTS = [
   },
   { 
     id: "wedding-2", 
-    title: "NYC", 
+    title: "Sam & Abigail", 
     category: "Weddings", 
     image: "/img/gallery/Wedding2/img1.webp",
     location: "Central Park",
@@ -84,7 +84,7 @@ const ALL_PROJECTS = [
   },
   { 
     id: "wedding-3", 
-    title: "NYC", 
+    title: "Anna & Michael", 
     category: "Weddings", 
     image: "/img/gallery/Wedding3/img1.webp",
     location: "Central Park",

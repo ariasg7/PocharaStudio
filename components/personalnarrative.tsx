@@ -27,7 +27,7 @@ export function PersonalNarrative() {
           >
             <div className="relative z-10 md:mr-20 lg:mr-32 aspect-[3/4] overflow-hidden bg-neutral-900 shadow-2xl">
               <img
-                src="/img/insta/insta1.webp"
+                src="/img/narrative/narrative1.JPG"
                 alt="Artist Portrait"
                 className="w-full h-full object-cover grayscale-[0.3] hover:grayscale-0 transition-all duration-1000"
                 loading="lazy"
@@ -42,9 +42,10 @@ export function PersonalNarrative() {
               className="absolute -bottom-10 right-0 md:-right-8 w-1/2 aspect-square z-20 overflow-hidden border-[1px] border-white/20 shadow-2xl bg-neutral-800"
             >
               <img
-                src="/img/insta/insta5.webp"
+                src="/img/narrative/narrative2.JPG"
                 alt="Behind the scenes"
-                className="w-full h-full object-cover opacity-80"
+                /* object-top shifts the image content down within the square frame */
+                className="w-full h-full object-cover object-top opacity-80"
                 loading="lazy"
               />
             </motion.div>
@@ -105,7 +106,7 @@ export function PersonalNarrative() {
               <div className="flex flex-wrap gap-4 pt-4">
                 <div className="h-px w-12 bg-white/30 self-center" />
                 <span className="text-[9px] tracking-[0.3em] font-light uppercase text-white/60">
-                  Pochara,
+                  Pochara Photogolffy,
                 </span>
                 <span className="text-[9px] tracking-[0.3em] font-light uppercase text-white/60">
                   Based in New York

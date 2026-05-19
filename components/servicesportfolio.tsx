@@ -8,13 +8,13 @@ const SERVICES = [
     title: "Weddings",
     subtitle: "EDITORIAL & DOCUMENTARY",
     description: "Capturing the quiet details and the big moments with equal intention. Authentic imagery that tells your story with excellence.",
-    image: "https://images.unsplash.com/photo-1596381421074-87bf109a032b?auto=format&fit=crop&q=80&w=1200",
+    image: "/img/services/Wedding.JPG",
   },
   {
     title: "Engagement",
     subtitle: "INTIMATE SESSIONS",
     description: "A focused session designed to capture chemistry through movement and natural light. Portraits that feel like you.",
-    image: "/img/insta/insta5.webp",
+    image: "/img/services/Engagment1.webp",
   },
   {
     title: "City Hall",
