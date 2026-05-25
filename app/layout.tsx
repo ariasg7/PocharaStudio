@@ -35,6 +35,15 @@ export const metadata: Metadata = {
     siteName: "Pochara Studio",
     locale: "en_US",
     type: "website",
+    // 👇 Forces messaging apps to display the full canvas image link preview card
+    images: [
+      {
+        url: "https://pocharastudio.com/opengraph-image.png", 
+        width: 1200,
+        height: 630,
+        alt: "Pochara Studio | Luxury Editorial Wedding Photography Portfolio",
+      },
+    ],
   },
 };
 
