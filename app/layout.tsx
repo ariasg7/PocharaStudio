@@ -35,10 +35,10 @@ export const metadata: Metadata = {
     siteName: "Pochara Studio",
     locale: "en_US",
     type: "website",
-    // 👇 Forces messaging apps to display the full canvas image link preview card
+    // 👇 Points directly to your new frame image in the public directory
     images: [
       {
-        url: "https://pocharastudio.com/opengraph-image.png", 
+        url: "https://pocharastudio.com/img/logo/PocharaStudioFrame.png", 
         width: 1200,
         height: 630,
         alt: "Pochara Studio | Luxury Editorial Wedding Photography Portfolio",
@@ -46,7 +46,6 @@ export const metadata: Metadata = {
     ],
   },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
