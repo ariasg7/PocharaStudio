@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     // 👇 Points directly to your new frame image in the public directory
     images: [
       {
-        url: "https://pocharastudio.com/img/logo/PocharaStudioFrame.png", 
+        url: "https://pocharastudio.com/img/logo/PocharaStudioFrame.webp", 
         width: 1200,
         height: 630,
         alt: "Pochara Studio | Luxury Editorial Wedding Photography Portfolio",

@@ -8,19 +8,19 @@ const SERVICES = [
     title: "Weddings",
     subtitle: "EDITORIAL & DOCUMENTARY",
     description: "Capturing the quiet details and the big moments with equal intention. Authentic imagery that tells your story with excellence.",
-    image: "/img/services/Wedding.JPG",
+    image: "/img/services/Wedding.webp",
   },
   {
     title: "Engagement",
     subtitle: "INTIMATE SESSIONS",
     description: "A focused session designed to capture chemistry through movement and natural light. Portraits that feel like you.",
-    image: "/img/services/Engagment1.webp",
+    image: "/img/services/Engagment.webp",
   },
   {
     title: "City Hall",
     subtitle: "NYC ELOPEMENTS",
     description: "For those choosing the effortless romance of an NYC elopement. Documented with a timeless, cinematic eye.",
-    image: "/img/gallery/CityHall2/img1.webp",
+    image: "/img/services/CityHall.webp",
   }
 ];
 

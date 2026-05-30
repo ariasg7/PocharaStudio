@@ -27,7 +27,7 @@ export function PersonalNarrative() {
           >
             <div className="relative z-10 md:mr-20 lg:mr-32 aspect-[3/4] overflow-hidden bg-neutral-900 shadow-2xl">
               <img
-                src="/img/narrative/narrative1.JPG"
+                src="/img/narrative/narrative1.webp"
                 alt="Artist Portrait"
                 className="w-full h-full object-cover grayscale-[0.3] hover:grayscale-0 transition-all duration-1000"
                 loading="lazy"
@@ -42,7 +42,7 @@ export function PersonalNarrative() {
               className="absolute -bottom-10 right-0 md:-right-8 w-1/2 aspect-square z-20 overflow-hidden border-[1px] border-white/20 shadow-2xl bg-neutral-800"
             >
               <img
-                src="/img/narrative/narrative2.JPG"
+                src="/img/narrative/narrative2.webp"
                 alt="Behind the scenes"
                 /* object-top shifts the image content down within the square frame */
                 className="w-full h-full object-cover object-top opacity-80"

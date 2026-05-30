@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 const INSTAGRAM_POSTS = [
   { id: 1, url: '/img/insta/insta1.webp', link: 'https://www.instagram.com/p/DRrvc1Nkf-R/', likes: 24, comments: 8 },
   { id: 2, url: '/img/insta/insta2.webp', link: 'https://www.instagram.com/p/DSL4JOrkSUF/', likes: 10, comments: 0 },
-  { id: 3, url: '/img/insta/insta3.webp', link: 'https://www.instagram.com/p/DPztO6EkfoF/', likes: 16, comments: 0 },
+  { id: 3, url: '/img/insta/insta8.webp', link: 'https://www.instagram.com/p/DMDakf7OPgw/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==', likes: 38, comments: 0 },
   { id: 4, url: '/img/insta/insta4.webp', link: 'https://www.instagram.com/p/DOUFVelEdHF/', likes: 34, comments: 0 },
-  { id: 5, url: '/img/insta/insta5.webp', link: 'https://www.instagram.com/p/DS-8joBkWne/', likes: 37, comments: 2 },
+  { id: 5, url: '/img/insta/insta7.webp', link: 'https://www.instagram.com/p/DK0GQ9zytjl/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==', likes: 15, comments: 2 },
   { id: 6, url: '/img/insta/insta6.webp', link: 'https://www.instagram.com/p/DOUF1BkEXMW/', likes: 33, comments: 4 },
 ];
 

@@ -7,34 +7,36 @@ const PHILOSOPHY = [
     number: "01",
     title: "The Curation",
     description: "Every frame is a deliberate choice. We focus on the interplay of light and shadow to create images that feel like a physical memory.",
-    image: "/img/gallery/CityHall1/img2.webp"
+    image: "/img/gallery/CityHall1/img2.webp",
+    // 🛠️ Slides the landscape image to focus on the couple on the left of the bench
+    objectPosition: "15% center" 
   },
   {
     number: "02",
     title: "The Connection",
     description: "Documentation is most powerful when it's honest. My approach is unobtrusive, allowing your genuine energy to take center stage.",
-    image: "/img/gallery/CityHall2/img5.webp"
+    image: "/img/gallery/CityHall2/img5.webp",
+    // 🛠️ Slides the landscape image to focus on the couple on the right under the pillars
+    objectPosition: "90% center" 
   },
   {
     number: "03",
     title: "The Legacy",
     description: "We are building a visual archive that will be passed down through generations: timeless, elegant, and true.",
-    image: "/img/gallery/CityHall3/img9.webp"
+    image: "/img/gallery/CityHall3/img9.webp",
+    // 🛠️ Slides the landscape image down to focus on the couple sitting at the bottom of the arch
+    objectPosition: "55% center" 
   }
 ];
 
-const GEAR_COLLECTION = [
-  {
-    name: "Canon 5D MK4",
-    type: "Medium Format Film",
-    description: "The gold standard for wedding portraiture. It captures skin tones and light with a soft, painterly quality that digital cannot replicate."
-  },
-  {
-    name: "Canon 5D MK4",
-    type: "Digital Rangefinder",
-    description: "Discreet and silent. Used for candid, documentary moments where being 'invisible' allows for the most honest stories."
-  }
-];
+// 🛠️ Corrected technical specifications and built out premium, intentional copywriting
+const FEATURED_GEAR = {
+  name: "Contax 645",
+  type: "Medium Format Film System",
+  lens: "Carl Zeiss Planar 80mm f/2 T*",
+  description: "Widely regarded as the definitive gold standard for fine-art wedding and editorial portraiture. Celebrated for its unique electronic focal plane architecture, this system bridges old-world analog depth with exceptional high-speed mobility.",
+  manifesto: "When paired with the legendary Zeiss 80mm glass, it renders skin tones with a luminous, painterly three-dimensional quality that modern high-megapixel digital sensors simply cannot replicate organically. It handles ambient light less like data, and more like poetry."
+};
 
 export function AboutMe() {
   return (
@@ -52,9 +54,10 @@ export function AboutMe() {
             >
               <div className="aspect-[3/4] bg-neutral-800 overflow-hidden shadow-2xl relative">
                 <img 
-                  src="/img/narrative/narrative1.JPG" 
+                  src="/img/narrative/narrative1.webp" 
                   alt="Pochara" 
                   className="w-full h-full object-cover grayscale opacity-80"
+                  style={{ objectPosition: "center" }}
                 />
                 <div className="absolute inset-0 border border-white/10 pointer-events-none" />
               </div>
@@ -104,7 +107,12 @@ export function AboutMe() {
                 className={`space-y-8 ${index === 1 ? 'md:mt-20' : ''} ${index === 2 ? 'md:mt-40' : ''}`}
               >
                 <div className="aspect-[4/5] bg-neutral-200 overflow-hidden shadow-xl">
-                  <img src={item.image} alt={item.title} className="w-full h-full object-cover grayscale" />
+                  <img 
+                    src={item.image} 
+                    alt={item.title} 
+                    className="w-full h-full object-cover grayscale" 
+                    style={{ objectPosition: item.objectPosition }} 
+                  />
                 </div>
                 <div className="space-y-4">
                   <div className="flex items-baseline gap-4">
@@ -134,34 +142,58 @@ export function AboutMe() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-16 lg:gap-32">
-            {GEAR_COLLECTION.map((item, index) => (
+          {/* 🛠️ Upgraded layout: Asymmetrical 2-column split to eliminate empty space organically */}
+          <div className="w-full">
+            <div className="h-px w-full bg-white/10 relative overflow-hidden mb-12">
               <motion.div 
-                key={item.name}
+                initial={{ x: "-100%" }}
+                whileInView={{ x: "0%" }}
+                transition={{ duration: 1.5, delay: 0.3 }}
+                className="absolute inset-0 bg-white/30"
+              />
+            </div>
+
+            <div className="grid md:grid-cols-12 gap-8 md:gap-16 items-start">
+              {/* Left Column: Core Technical Blueprint Specs */}
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="md:col-span-4 space-y-4"
+              >
+                <div>
+                  <h4 className="text-[9px] tracking-[0.4em] uppercase font-bold text-white/30 mb-1">System Core</h4>
+                  <h5 className="text-2xl font-light text-white/90">{FEATURED_GEAR.name}</h5>
+                </div>
+                <div>
+                  <h4 className="text-[9px] tracking-[0.4em] uppercase font-bold text-white/30 mb-1">Format Class</h4>
+                  <p className="text-sm font-light text-white/60">{FEATURED_GEAR.type}</p>
+                </div>
+                <div>
+                  <h4 className="text-[9px] tracking-[0.4em] uppercase font-bold text-white/30 mb-1">Primary Optic</h4>
+                  <p className="text-sm font-serif italic text-white/80" style={{ fontFamily: 'Cormorant Garamond, serif' }}>{FEATURED_GEAR.lens}</p>
+                </div>
+              </motion.div>
+
+              {/* Right Column: Narrative Copy Breakdown */}
+              <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: index * 0.2 }}
+                transition={{ duration: 1, delay: 0.1 }}
                 viewport={{ once: true }}
-                className="space-y-6"
+                className="md:col-span-8 space-y-6"
               >
-                <div className="h-px w-full bg-white/10 relative overflow-hidden">
-                   <motion.div 
-                    initial={{ x: "-100%" }}
-                    whileInView={{ x: "0%" }}
-                    transition={{ duration: 1.5, delay: 0.5 }}
-                    className="absolute inset-0 bg-white/30"
-                   />
-                </div>
-                <div className="space-y-2">
-                  <h4 className="text-[10px] tracking-[0.3em] uppercase font-semibold text-white/30">{item.type}</h4>
-                  <h5 className="text-3xl font-serif" style={{ fontFamily: 'Cormorant Garamond, serif' }}>{item.name}</h5>
-                </div>
-                <p className="text-sm font-light leading-relaxed text-white/50 max-w-md">
-                  {item.description}
+                <p className="text-base font-light leading-relaxed text-white/70 max-w-2xl">
+                  {FEATURED_GEAR.description}
+                </p>
+                <p className="text-sm font-light italic leading-relaxed text-white/40 max-w-2xl" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+                  {FEATURED_GEAR.manifesto}
                 </p>
               </motion.div>
-            ))}
+            </div>
           </div>
+
         </div>
       </section>
     </div>
