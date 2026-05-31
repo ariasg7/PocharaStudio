@@ -6,20 +6,20 @@ import { useState, useEffect } from 'react';
 const REVIEWS = [
   {
     quote: "Working with Pochara was an effortless experience. They captured the quiet, intimate moments of our City Hall elopement with a cinematic eye.",
-    author: "JESSIE",
-    location: "WEDDING",
+    author: "JESSICA & JUAN",
+    location: "NYC WEDDING",
     image: "/img/gallery/CityHall1/img3.webp" 
   },
   {
     quote: "Thank you so much for being our photographer, we couldn't have asked for a better experience. We are completely in love with our engagement photos, and our family and friends cannot stop raving about them! ",
-    author: "MORYCHAIMAN",
+    author: "MORY & JOHN",
     location: "ENGAGEMENT",
     image: "/img/insta/insta5.webp"
   },
   {
     quote: "If I could give more than 5 stars, I would. Pochara exceeded all expectations with our wedding photos. She was patient, kind, professional, and made us feel completely comfortable the entire time.",
-    author: "MICHAEL & ANN",
-    location: "BROOKLYN BRIDGE",
+    author: "ANN & MICHAEL",
+    location: "NYC WEDDING",
     image: "/img/insta/insta3.webp"
   }
 ];
