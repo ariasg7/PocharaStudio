@@ -62,15 +62,29 @@ export function AboutHero() {
         </motion.p>
       </motion.div>
 
-      {/* SCROLL INDICATOR */}
+      {/* 📜 ⚡ Fixed: ANIMATED SCROLL DOWN INDICATOR (Matches Main Hero Perfectly) */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        transition={{ delay: 1.5, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
       >
-        <span className="text-[8px] tracking-[0.3em] text-white/40 uppercase mb-2">Scroll</span>
-        <div className="w-px h-12 bg-gradient-to-b from-white/60 to-transparent" />
+        <span className="text-[8px] tracking-[0.4em] text-white/30 uppercase font-light">
+          Scroll
+        </span>
+        <div className="w-[2px] h-16 bg-white/10 relative overflow-hidden rounded-full">
+          <motion.div 
+            animate={{ 
+              y: ["-100%", "100%"] 
+            }}
+            transition={{ 
+              duration: 2, 
+              repeat: Infinity, 
+              ease: [0.43, 0.13, 0.23, 0.96] 
+            }}
+            className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-transparent via-white to-transparent"
+          />
+        </div>
       </motion.div>
     </section>
   );

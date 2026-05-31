@@ -11,6 +11,14 @@ export function GalleryHero() {
   const heroY = useTransform(scrollY, [0, 400], [0, 80]);
   const bgScale = useTransform(scrollY, [0, 1000], [1, 1.1]);
 
+  // 📜 Smooth scroll handler to target the Portfolio Preview section (#gallery)
+  const handleViewCollectionClick = () => {
+    const gallerySection = document.getElementById('gallery');
+    if (gallerySection) {
+      gallerySection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative h-[100svh] w-full overflow-hidden bg-black">
       {/* BACKGROUND LAYER */}
@@ -59,7 +67,11 @@ export function GalleryHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.6 }}
         >
-          <button className="group relative border border-white/50 px-12 py-5 hover:border-white hover:text-black transition-all duration-500 text-[10px] tracking-[0.25em] flex items-center gap-4 overflow-hidden">
+          {/* Added onClick handler here */}
+          <button 
+            onClick={handleViewCollectionClick}
+            className="group relative border border-white/50 px-12 py-5 hover:border-white hover:text-black transition-all duration-500 text-[10px] tracking-[0.25em] flex items-center gap-4 overflow-hidden"
+          >
             <span className="relative z-10">VIEW THE COLLECTION</span>
             <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform duration-500 relative z-10" />
             
@@ -69,14 +81,29 @@ export function GalleryHero() {
         </motion.div>
       </motion.div>
 
-      {/* SCROLL INDICATOR */}
+      {/* 📜 ⚡ Fixed: ANIMATED SCROLL DOWN INDICATOR (Matches Main and About Heros) */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
       >
-        <div className="w-px h-12 bg-gradient-to-b from-white to-transparent" />
+        <span className="text-[8px] tracking-[0.4em] text-white/30 uppercase font-light">
+          Scroll
+        </span>
+        <div className="w-[2px] h-16 bg-white/10 relative overflow-hidden rounded-full">
+          <motion.div 
+            animate={{ 
+              y: ["-100%", "100%"] 
+            }}
+            transition={{ 
+              duration: 2, 
+              repeat: Infinity, 
+              ease: [0.43, 0.13, 0.23, 0.96] 
+            }}
+            className="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-transparent via-white to-transparent"
+          />
+        </div>
       </motion.div>
     </section>
   );
