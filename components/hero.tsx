@@ -31,7 +31,7 @@ export function Hero() {
           alt="Cinematic wedding moment at Bethesda Terrace"
           className="w-full h-full object-cover opacity-60 grayscale brightness-[0.8]"
           loading="eager"
-          fetchPriority="high" // ⚡ React camelCase fixed
+          fetchPriority="high"
           decoding="sync"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
@@ -47,14 +47,14 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-8 md:mb-10"
+          className="mb-8 md:mb-10 flex items-center justify-center"
           style={{ contentVisibility: 'auto' }}
         >
           <img 
             src="/img/logo/PocharaStudioWhite.webp" 
             alt="Pochara Studio"
             className="w-100 h-100 md:w-164 md:h-164 object-contain opacity-95" 
-            fetchPriority="high" // ⚡ React camelCase fixed
+            fetchPriority="high"
             decoding="sync"
           />
         </motion.div>
