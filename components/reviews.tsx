@@ -100,10 +100,10 @@ export function Reviews() {
               </p>
 
               <div>
-                <h4 className="text-[#1a1a1a] text-[10px] tracking-[0.4em] uppercase mb-1">
+                <h4 className="text-[#1a1a1a] text-[10px] font-bold tracking-[0.4em] uppercase mb-1">
                   {REVIEWS[index].author}
                 </h4>
-                <p className="text-[#1a1a1a]/40 text-[9px] tracking-[0.2em] uppercase">
+                <p className="text-[#1a1a1a] text-[9px] tracking-[0.2em] uppercase">
                   {REVIEWS[index].location}
                 </p>
               </div>

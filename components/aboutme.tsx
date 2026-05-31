@@ -69,7 +69,7 @@ export function AboutMe() {
               viewport={{ once: true }}
               className="md:col-span-7 space-y-8"
             >
-              <h2 className="text-[10px] tracking-[0.5em] uppercase text-white/40">The Artist</h2>
+              <h2 className="text-[10px] tracking-[0.5em] uppercase text-white">The Artist</h2>
               <h3 className="text-4xl md:text-6xl lg:text-7xl font-light italic leading-none" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
                 Documenting the <br /> <span className="text-white/60">Poetry of Life</span>
               </h3>
