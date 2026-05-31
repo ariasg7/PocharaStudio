@@ -48,7 +48,7 @@ export function Reviews() {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-20 md:mb-32">
-            <motion.h2
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
@@ -82,6 +82,7 @@ export function Reviews() {
               <motion.img
                 key={`img-${index}`}
                 src={REVIEWS[index].image}
+                alt={`Wedding photography testimonial by ${REVIEWS[index].author}`} // ⚡ Fixed: Dynamic descriptive alt tag added
                 initial={{ scale: 1.1, filter: 'grayscale(100%)' }}
                 animate={{ scale: 1, filter: 'grayscale(20%)' }}
                 transition={{ duration: 1.5 }}
