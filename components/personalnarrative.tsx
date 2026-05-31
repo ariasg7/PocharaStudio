@@ -96,7 +96,7 @@ export function PersonalNarrative() {
                   className="group relative inline-flex items-center gap-4 border border-white/30 px-10 py-5 overflow-hidden transition-all hover:border-white"
                 >
                   <span className="relative z-10 text-[10px] tracking-[0.3em] uppercase group-hover:text-black transition-colors duration-500">
-                    Learn More
+                    About Pochara Studio
                   </span>
                   <ArrowRight size={14} className="relative z-10 group-hover:translate-x-2 group-hover:text-black transition-all duration-500" />
                   
