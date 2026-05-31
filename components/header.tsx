@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const NAV_LINKS = [
   { name: 'ABOUT ME', href: '/#about-me' },
@@ -17,6 +18,18 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkText, setIsDarkText] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+
+  // Smooth scroll to top handler
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,9 +69,10 @@ export function Header() {
       >
         <div className="flex items-center justify-between">
           
-          {/* BRANDING SECTION - PS REMOVED */}
+          {/* BRANDING SECTION */}
           <Link 
             href="/" 
+            onClick={handleLogoClick}
             className="cursor-pointer group" 
             style={{ fontFamily: 'Cormorant Garamond, serif' }}
           >
