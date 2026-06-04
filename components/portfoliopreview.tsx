@@ -3,108 +3,57 @@
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ChevronLeft, ArrowRight, X } from 'lucide-react';
+import { client } from '@/sanity/lib/client'; // Adjust path if your lib is located elsewhere
 
-// HELPER: Automatically creates paths for img1.webp, img2.webp, etc.
-const generateGallery = (folderName: string, totalImages: number) => {
-  return Array.from({ length: totalImages }, (_, i) => `/img/gallery/${folderName}/img${i + 1}.webp`);
-};
-
-const ALL_PROJECTS = [
-  { 
-    id: "city-hall-1", 
-    title: "CT City Hall", 
-    category: "City Hall", 
-    image: "/img/gallery/CityHall1/img1.webp",
-    location: "Lower Manhattan",
-    gallery: generateGallery("CityHall1", 16) 
-  },
-  { 
-    id: "city-hall-2", 
-    title: "Zack & Marcella", 
-    category: "City Hall", 
-    image: "/img/gallery/CityHall2/img1.webp",
-    location: "City Hall",
-    gallery: generateGallery("CityHall2", 28) 
-  },
-  { 
-    id: "city-hall-3", 
-    title: "Lisa & Ryan", 
-    category: "City Hall", 
-    image: "/img/gallery/CityHall3/img1.webp",
-    location: "Central Park",
-    gallery: generateGallery("CityHall3", 16) 
-  },
-  { 
-    id: "city-hall-4", 
-    title: "John & Mory", 
-    category: "City Hall", 
-    image: "/img/gallery/CityHall4/img1.webp",
-    location: "Central Park",
-    gallery: generateGallery("CityHall4", 26) 
-  },
-  { 
-    id: "engagement-1", 
-    title: "John & Mory", 
-    category: "Engagements", 
-    image: "/img/gallery/Engagement1/img1.webp",
-    location: "Central Park",
-    gallery: generateGallery("Engagement1", 13) 
-  },
-  { 
-    id: "engagement-2", 
-    title: "Anna & Michael", 
-    category: "Engagements", 
-    image: "/img/gallery/Engagement2/img1.webp",
-    location: "Central Park",
-    gallery: generateGallery("Engagement2", 32) 
-  },
-  { 
-    id: "engagement-3", 
-    title: "Matthew & Bella", 
-    category: "Engagements", 
-    image: "/img/gallery/Engagement3/img1.webp",
-    location: "Central Park",
-    gallery: generateGallery("Engagement3", 28) 
-  },
-  { 
-    id: "wedding-1", 
-    title: "Walima Family", 
-    category: "Weddings", 
-    image: "/img/gallery/Wedding1/img1.webp",
-    location: "Central Park",
-    gallery: generateGallery("Wedding1", 26) 
-  },
-  { 
-    id: "wedding-2", 
-    title: "Sam & Abigail", 
-    category: "Weddings", 
-    image: "/img/gallery/Wedding2/img1.webp",
-    location: "Central Park",
-    gallery: generateGallery("Wedding2", 16) 
-  },
-  { 
-    id: "wedding-3", 
-    title: "Anna & Michael", 
-    category: "Weddings", 
-    image: "/img/gallery/Wedding3/img1.webp",
-    location: "Central Park",
-    gallery: generateGallery("Wedding3", 27) 
-  }
-];
+interface Project {
+  id: string;
+  title: string;
+  category: string;
+  image: string;
+  location: string;
+  gallery: string[];
+}
 
 const FILTERS = ["All", "Weddings", "Engagements", "City Hall"];
 
 export function PortfolioPreview() {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState("All");
   const [index, setIndex] = useState(0);
-  const [isExpanded, setIsExpanded] = useState<null | typeof ALL_PROJECTS[0]>(null);
+  const [isExpanded, setIsExpanded] = useState<null | Project>(null);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const query = `
+          *[_type == "project"] {
+            "id": id.current,
+            title,
+            category,
+            "image": mainImage.asset->url,
+            location,
+            "gallery": gallery[].asset->url
+          }
+        `;
+        const data = await client.fetch<Project[]>(query);
+        setProjects(data);
+      } catch (error) {
+        console.error("Error loading projects from Sanity:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
 
   // Filter Logic
   const filteredProjects = useMemo(() => {
     return activeFilter === "All" 
-      ? ALL_PROJECTS 
-      : ALL_PROJECTS.filter(p => p.category === activeFilter);
-  }, [activeFilter]);
+      ? projects 
+      : projects.filter(p => p.category === activeFilter);
+  }, [activeFilter, projects]);
 
   // Navigation Logic
   const handleFilterChange = (filter: string) => {
@@ -135,6 +84,31 @@ export function PortfolioPreview() {
     window.addEventListener('keydown', handleEsc);
     return () => window.removeEventListener('keydown', handleEsc);
   }, []);
+
+  // Split gallery images into row-by-row columns dynamically for desktop
+  const splitGallery = useMemo(() => {
+    if (!isExpanded || !isExpanded.gallery) return { left: [], right: [] };
+    const left: string[] = [];
+    const right: string[] = [];
+    
+    // Distributing alternating items guarantees they read left-to-right, row-by-row
+    isExpanded.gallery.forEach((img, i) => {
+      if (i % 2 === 0) {
+        left.push(img);
+      } else {
+        right.push(img);
+      }
+    });
+    return { left, right };
+  }, [isExpanded]);
+
+  if (loading) {
+    return (
+      <div className="bg-[#1a1a1a] h-screen flex items-center justify-center text-white/20 tracking-[0.4em] text-[10px] uppercase">
+        Loading Visual Diary...
+      </div>
+    );
+  }
 
   return (
     <section id="gallery" className="bg-[#1a1a1a] py-12 md:py-32 px-4 md:px-6 overflow-hidden relative min-h-screen flex flex-col justify-center">
@@ -259,23 +233,37 @@ export function PortfolioPreview() {
                 <p className="text-white/40 text-xs tracking-widest uppercase">{isExpanded.location}</p>
               </motion.div>
 
-              {/* Masonry Style Grid */}
-              <div className="columns-1 md:columns-2 gap-8 space-y-8">
-                {isExpanded.gallery?.map((img, i) => (
-                  <motion.div 
-                    key={i}
-                    initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ 
-                      duration: 0.8, 
-                      delay: i * 0.1,
-                      ease: [0.215, 0.61, 0.355, 1] 
-                    }}
-                    className="break-inside-avoid rounded-sm overflow-hidden bg-neutral-900 border border-white/5"
-                  >
-                    <img src={img} className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" alt="Gallery shot" />
-                  </motion.div>
-                ))}
+              {/* Row-by-Row Balanced Masonry Grid */}
+              <div className="flex flex-col md:flex-row gap-8">
+                {/* Left Column (Even Indexes: 0, 2, 4...) */}
+                <div className="flex-1 space-y-8">
+                  {splitGallery.left.map((img, i) => (
+                    <motion.div 
+                      key={`left-${i}`}
+                      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ duration: 0.8, delay: i * 0.1, ease: [0.215, 0.61, 0.355, 1] }}
+                      className="rounded-sm overflow-hidden bg-neutral-900 border border-white/5"
+                    >
+                      <img src={img} className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" alt="Gallery shot" />
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Right Column (Odd Indexes: 1, 3, 5...) */}
+                <div className="flex-1 space-y-8">
+                  {splitGallery.right.map((img, i) => (
+                    <motion.div 
+                      key={`right-${i}`}
+                      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ duration: 0.8, delay: i * 0.1 + 0.05, ease: [0.215, 0.61, 0.355, 1] }}
+                      className="rounded-sm overflow-hidden bg-neutral-900 border border-white/5"
+                    >
+                      <img src={img} className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700" alt="Gallery shot" />
+                    </motion.div>
+                  ))}
+                </div>
               </div>
 
               <div className="mt-32 text-center pb-20">
