@@ -28,6 +28,14 @@ export const metadata: Metadata = {
     "Engagement Photographer NY",
     "Editorial Wedding Photographer",
   ],
+  // 👇 Added the icons configuration pointing to the files in your /app directory
+  icons: {
+    icon: [
+      { url: "/favicon.ico" }, // Fallback for standard browsers
+      { url: "/icon.png", type: "image/png" } // High-res version for Google Search / modern browsers
+    ],
+    apple: "/apple-icon.png", // Optional: clear shortcut icon for iPhone home screen bookmarks
+  },
   openGraph: {
     title: "Pochara Studio | Wedding & Engagement Photography",
     description: "Documenting cinematic love stories nationwide. Based in NY.",
@@ -35,7 +43,6 @@ export const metadata: Metadata = {
     siteName: "Pochara Studio",
     locale: "en_US",
     type: "website",
-    // 👇 Points directly to your new frame image in the public directory
     images: [
       {
         url: "https://pocharastudio.com/img/logo/PocharaStudioFrame.webp", 
@@ -46,6 +53,7 @@ export const metadata: Metadata = {
     ],
   },
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{
