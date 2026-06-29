@@ -7,7 +7,7 @@ const PHILOSOPHY = [
     number: "01",
     title: "The Curation",
     description: "Every frame is a deliberate choice. We focus on the interplay of light and shadow to create images that feel like a physical memory.",
-    image: "/img/gallery/CityHall1/img2.webp",
+    image: "/img/gallery/CityHall4/img3.webp",
     // 🛠️ Slides the landscape image to focus on the couple on the left of the bench
     objectPosition: "15% center" 
   },

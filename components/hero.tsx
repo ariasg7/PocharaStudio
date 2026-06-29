@@ -29,7 +29,7 @@ export function Hero() {
         <img
           src="/img/hero/img1.webp"
           alt="Cinematic wedding moment at Bethesda Terrace"
-          className="w-full h-full object-cover opacity-70 brightness-[0.75]"
+          className="w-full h-full object-cover opacity-70 grayscale brightness-[0.75]"
           loading="eager"
           fetchPriority="high"
           decoding="sync"
